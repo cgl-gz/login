@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <login></login>
+    <Winning></Winning>
   </div>
 </template>
 
 <script>
-import Login from "./components/login/Login";
+import Winning from "./components/winning/Winning";
+
 export default {
   components: {
-    Login
+    Winning
   }
 };
 </script>

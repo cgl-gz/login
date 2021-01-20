@@ -85,7 +85,23 @@ p {
   margin: 0 auto;
   border: 1 solid black;
   background: url(./img/itemImg-001.png) no-repeat center;
-  background-size: cover;
+  background-size: 100%, 100%;
+}
+
+input::-webkit-input-placeholder {
+  color: rgba(4, 163, 116, 0.938);
+}
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgba(4, 163, 116, 0.938);
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgba(4, 163, 116, 0.938);
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgba(4, 163, 116, 0.938);
 }
 
 .item-login {
@@ -113,21 +129,5 @@ p {
   padding: 8px 0;
   background: rgba(4, 163, 116, 0.938);
   color: white;
-}
-
-input::-webkit-input-placeholder {
-  color: rgba(4, 163, 116, 0.938);
-}
-input::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: rgba(4, 163, 116, 0.938);
-}
-input:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: rgba(4, 163, 116, 0.938);
-}
-input:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: rgba(4, 163, 116, 0.938);
 }
 </style>
