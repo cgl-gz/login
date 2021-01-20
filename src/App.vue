@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <Winning></Winning>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Winning from "./components/winning/Winning";
-
-export default {
-  components: {
-    Winning
-  }
-};
+export default {};
 </script>
 
 <style></style>
