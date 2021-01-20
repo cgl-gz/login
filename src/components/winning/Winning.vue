@@ -2,7 +2,7 @@
   <div class="winning">
     <!-- 头部 -->
     <div class="item-header">
-      <span class="back"> > </span>
+      <span class="back">{{ back }}</span>
       <span class="title">我的中奖记录</span>
     </div>
 
@@ -25,24 +25,38 @@
             <!-- 右侧 具体信息 -->
             <div class="wrapper">
               <div class="message-item">
-                <span class="left">获奖者:</span>
-                <span class="right">{{ item.name }}</span>
+                <div>
+                  <span class="left">获奖者:</span>
+                  <span class="right">{{ item.name }}</span>
+                </div>
+                <div>
+                  <span class="left">获奖时间:</span>
+                  <span class="right">{{ item.time }}</span>
+                </div>
+                <div>
+                  <span class="left">商品期数:</span>
+                  <span class="right">{{ item.periods }}</span>
+                </div>
               </div>
-              <div class="message-item">
-                <span class="left">获奖时间:</span>
-                <span class="right">{{ item.time }}</span>
-              </div>
-              <div class="message-item">
-                <span class="left">商品期数:</span>
-                <span class="right">{{ item.periods }}</span>
-              </div>
+
               <div class="win-num">我的幸运号码：{{ item.number }}</div>
             </div>
           </div>
 
           <!-- 底部 -->
-          <div class="win-state">
-            <div class="state"></div>
+          <div class="base">
+            <div class="win-state">
+              <div class="">状态：{{ codeTransition(item.state) }}</div>
+              <div class="deadline">过期时间：{{ item.deadline }}</div>
+            </div>
+            <div class="button-state">
+              <button
+                v-if="getButtonState(item.state)"
+                :class="{ active: item.state == 1 }"
+              >
+                {{ getButtonState(item.state) }}
+              </button>
+            </div>
           </div>
         </li>
       </ul>
@@ -54,6 +68,7 @@
 export default {
   data() {
     return {
+      back: "<",
       winningState: 1,
       winningMessage: [
         {
@@ -90,6 +105,16 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    codeTransition(state) {
+      let list = ["待补充地址", "已过期", "发货中", "已签收"];
+      return list[state];
+    },
+    getButtonState(state) {
+      let list = ["填写地址", "填写地址", "查看物流"];
+      return list[state];
+    }
   }
 };
 </script>
@@ -97,7 +122,7 @@ export default {
 <style scoped>
 .winning {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #ccc;
 }
 
@@ -107,11 +132,14 @@ export default {
   background: white;
   text-align: center;
   line-height: 5vh;
-}
-.item-header .back {
-  float: left;
+  position: relative;
 }
 
+.item-header .back {
+  position: absolute;
+  left: 15px;
+  font-size: 1.5rem;
+}
 .item {
   margin: 15px;
   background: white;
@@ -120,7 +148,7 @@ export default {
 
 .upper-part {
   height: 7vh;
-  border-bottom: 1px dotted #ccc;
+  border-bottom: 2px dotted #ccc;
   text-align: center;
   line-height: 7vh;
 }
@@ -154,7 +182,72 @@ export default {
 .message-img {
   flex: 0 0 16vh;
   height: 16vh;
-  background: #eee;
+  background: #999;
   margin: 0 2vh 0 0;
+}
+
+.wrapper {
+  flex: 1;
+  height: 16vh;
+  position: relative;
+}
+
+.message-item {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  font-size: 0.8rem;
+}
+
+.message-item div {
+  display: flex;
+}
+
+.message-item div .left {
+  flex: 0 0 80px;
+  color: #999;
+}
+
+.message-item div .right {
+  flex: 1;
+}
+
+.win-num {
+  width: 100%;
+  height: 25px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background: blueviolet;
+  color: white;
+  line-height: 25px;
+}
+
+.base {
+  width: 100%;
+  height: 8vh;
+  padding: 2vh;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.win-state {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.button-state button {
+  border: 1px solid blueviolet;
+  border-radius: 2px;
+  color: blueviolet;
+}
+
+.active {
+  pointer-events: none;
+  cursor: not-allowed;
+  border: 1px solid #999 !important;
+  color: #999 !important;
 }
 </style>
