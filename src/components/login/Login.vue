@@ -10,26 +10,27 @@
     <van-form @submit="onSubmit" autocomplete="off">
       <div class="item-login">
         <van-field
-          class="item-input"
-          v-model="username"
-          name="用户名"
-          placeholder="用户名"
+            class="item-input"
+            v-model="username"
+            name="用户名"
+            placeholder="用户名"
         />
       </div>
 
       <div class="item-login">
         <van-field
-          class="item-input"
-          v-model="password"
-          type="password"
-          name="密码"
-          placeholder="密码"
+            class="item-input"
+            v-model="password"
+            type="password"
+            name="密码"
+            placeholder="密码"
         />
       </div>
 
       <div class="item-login">
         <van-button round block type="info" native-type="submit"
-          >登录</van-button
+        >登录
+        </van-button
         >
       </div>
     </van-form>
@@ -50,33 +51,41 @@
 </template>
 
 <script>
+import { Login } from '@/api'
+
 export default {
   data() {
     return {
-      username: "",
-      password: ""
-    };
+      username: '',
+      password: ''
+    }
+  },
+  mounted() {
+    Login({
+      username: 'aaaaa',
+      password: 'bbbbb'
+    })
   },
   methods: {
     onSubmit() {
-      if (this.username !== "" && this.password !== "") {
-        console.log("用户名:", this.username, "密码", this.password);
+      if (this.username !== '' && this.password !== '') {
+        console.log('用户名:', this.username, '密码', this.password)
 
-        fetch("https://api.virapi.com/vir_gitee286e99f81d99f/practice/login", {
-          method: "POST",
+        fetch('https://api.virapi.com/vir_gitee286e99f81d99f/practice/login', {
+          method: 'POST',
           Headers: {
-            "Content-Type": "application/json",
-            key: "$2a$10$CCuJ8uvAfhYOHxJyw8f93eRx5Hba56RmSDSyLXRBVe94jRt5yz5k2"
+            'Content-Type': 'application/json',
+            key: '$2a$10$CCuJ8uvAfhYOHxJyw8f93eRx5Hba56RmSDSyLXRBVe94jRt5yz5k2'
           }
-        });
-        this.$store.commit("userStatus", 1);
-        this.$router.push("/winning");
+        })
+        this.$store.commit('userStatus', 1)
+        this.$router.push('/winning')
       } else {
-        alert("请补齐用户名或密码");
+        alert('请补齐用户名或密码')
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -85,11 +94,13 @@ export default {
   height: 100vh;
   background: #eee;
 }
+
 .item-header {
   height: 10vh;
   text-align: center;
   line-height: 10vh;
 }
+
 p {
   margin: 0;
 }
@@ -123,6 +134,7 @@ p {
   width: 70%;
   margin: 15px auto;
   height: 40px;
+
   .item-input {
     height: 40px;
     padding: 0 20px;
