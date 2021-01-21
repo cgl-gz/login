@@ -60,11 +60,12 @@ export default {
       password: ''
     }
   },
-  mounted() {
-    Login({
+  async mounted() {
+    const res=await Login({
       username: 'aaaaa',
       password: 'bbbbb'
     })
+    console.log(res)
   },
   methods: {
     onSubmit() {

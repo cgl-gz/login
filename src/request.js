@@ -13,5 +13,10 @@ request.interceptors.request.use(
        throw new Error(error)
     }
 )
+request.interceptors.response.use(response=>{
+    return response.data
+},error => {
+    throw new Error(error)
+})
 
 export default request
