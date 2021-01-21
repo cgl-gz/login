@@ -15,6 +15,7 @@ export default {};
 .home {
   text-align: center;
   margin: 200px 0;
+  padding: 0;
 }
 .item {
   display: inline-block;

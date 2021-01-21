@@ -6,29 +6,35 @@
 
     <div class="item-img"></div>
 
-    <!-- vant 表单 因css问题暂时不会修改 -->
-    <!-- <van-form @submit="onSubmit">
-      <van-field
-        class="item-input"
-        v-model="username"
-        name="用户名"
-        placeholder="用户名"
-      />
-      <van-field
-        class="item-input"
-        v-model="password"
-        type="password"
-        name="密码"
-        placeholder="密码"
-      />
-      <div style="margin: 16px;">
+    <!-- vant 表单 尝试修改样式 -->
+    <van-form @submit="onSubmit" autocomplete="off">
+      <div class="item-login">
+        <van-field
+          class="item-input"
+          v-model="username"
+          name="用户名"
+          placeholder="用户名"
+        />
+      </div>
+
+      <div class="item-login">
+        <van-field
+          class="item-input"
+          v-model="password"
+          type="password"
+          name="密码"
+          placeholder="密码"
+        />
+      </div>
+
+      <div class="item-login">
         <van-button round block type="info" native-type="submit"
           >登录</van-button
         >
       </div>
-    </van-form> -->
+    </van-form>
 
-    <form @submit.prevent="onSubmit">
+    <!-- <form @submit.prevent="onSubmit">
       <div class="item-login">
         <input type="text" placeholder="用户名" v-model="username" />
       </div>
@@ -39,7 +45,7 @@
       <div class="item-login">
         <button type="submit">登录</button>
       </div>
-    </form>
+    </form> -->
   </div>
 </template>
 
@@ -55,6 +61,14 @@ export default {
     onSubmit() {
       if (this.username !== "" && this.password !== "") {
         console.log("用户名:", this.username, "密码", this.password);
+
+        fetch("https://api.virapi.com/vir_gitee286e99f81d99f/practice/login", {
+          method: "POST",
+          Headers: {
+            "Content-Type": "application/json",
+            key: "$2a$10$CCuJ8uvAfhYOHxJyw8f93eRx5Hba56RmSDSyLXRBVe94jRt5yz5k2"
+          }
+        });
         this.$store.commit("userStatus", 1);
         this.$router.push("/winning");
       } else {
@@ -89,48 +103,58 @@ p {
   background-size: 100%, 100%;
 }
 
-input::-webkit-input-placeholder {
-  color: rgba(4, 163, 116, 0.938);
-}
-input::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: rgba(4, 163, 116, 0.938);
-}
-input:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: rgba(4, 163, 116, 0.938);
-}
-input:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: rgba(4, 163, 116, 0.938);
-}
+// input::-webkit-input-placeholder {
+//   color: rgba(4, 163, 116, 0.938);
+// }
+// input::-moz-placeholder {
+//   /* Mozilla Firefox 19+ */
+//   color: rgba(4, 163, 116, 0.938);
+// }
+// input:-moz-placeholder {
+//   /* Mozilla Firefox 4 to 18 */
+//   color: rgba(4, 163, 116, 0.938);
+// }
+// input:-ms-input-placeholder {
+//   /* Internet Explorer 10-11 */
+//   color: rgba(4, 163, 116, 0.938);
+// }
 
 .item-login {
   width: 70%;
-  margin: 20px auto;
+  margin: 15px auto;
+  height: 40px;
+  .item-input {
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    line-height: 40px;
+    outline: none;
+    box-shadow: 3px 6px 5px #ccc;
+  }
 }
 
-.item-login input {
-  width: 100%;
-  border: 0;
-  height: 40px;
-  padding: 0 20px;
-  background-color: white;
-  border-radius: 15px;
-  outline: none;
-  box-sizing: border-box;
-  box-shadow: 3px 6px 5px #ccc;
-}
+// .item-login input {
+//   width: 100%;
+//   border: 0;
+//   height: 40px;
+//   padding: 0 20px;
+//   background-color: white;
+//   border-radius: 15px;
+//   outline: none;
+//   box-sizing: border-box;
+//   box-shadow: 3px 6px 5px #ccc;
+// }
 
-.item-login button {
-  width: 100%;
-  height: 40px;
-  border: 0;
-  border-radius: 20px;
-  padding: 8px 0;
-  background: rgba(4, 163, 116, 0.938);
-  color: white;
-}
+// .item-login button {
+//   width: 100%;
+//   height: 40px;
+//   border: 0;
+//   border-radius: 20px;
+//   padding: 8px 0;
+//   background: rgba(4, 163, 116, 0.938);
+//   color: white;
+// }
 // .login {
 //   .item-header {
 //   }

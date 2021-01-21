@@ -1,10 +1,10 @@
 <template>
   <div class="winning">
     <!-- 头部 -->
-    <div class="item-header">
+    <!-- <div class="item-header">
       <span class="back">{{ back }}</span>
       <span class="title">我的中奖记录</span>
-    </div>
+    </div> -->
 
     <!-- 内容 -->
     <div class="container">
@@ -137,9 +137,10 @@ export default {
   width: 100%;
   height: 100%;
   background: #ccc;
+  overflow: hidden;
 }
 
-.item-header {
+/* .item-header {
   width: 100%;
   height: 5vh;
   background: white;
@@ -152,8 +153,8 @@ export default {
   position: absolute;
   left: 15px;
   font-size: 1.5rem;
-}
-.item {
+} */
+.container .item {
   margin: 15px;
   background: white;
   border-radius: 5px;
@@ -185,15 +186,15 @@ export default {
 }
 
 .message {
-  height: 20vh;
   border-bottom: 3px solid #ccc;
   display: flex;
   align-items: center;
-  padding: 0 2vh;
+  padding: 2vh;
+  overflow: hidden;
 }
 
 .message-img {
-  flex: 0 0 16vh;
+  flex: 0 0 30%;
   height: 16vh;
   background: #999;
   margin: 0 2vh 0 0;
@@ -213,11 +214,12 @@ export default {
 }
 
 .message-item div {
+  width: 100%;
   display: flex;
 }
 
 .message-item div .left {
-  flex: 0 0 80px;
+  flex: 0 0 40%;
   color: #999;
 }
 
@@ -227,13 +229,13 @@ export default {
 
 .win-num {
   width: 100%;
-  height: 25px;
+  /* height: 3vh; */
   position: absolute;
   bottom: 0;
   text-align: center;
   background: blueviolet;
   color: white;
-  line-height: 25px;
+  line-height: 3vh;
 }
 
 .base {
