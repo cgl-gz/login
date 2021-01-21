@@ -5,12 +5,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isLogin: false
+    isLogin: false,
+    userName: ""
   },
   mutations: {
     userStatus(state, num) {
       if (num == 1) {
         state.isLogin = true;
+      }
+    },
+    getUserName(state, name) {
+      if (name != undefined) {
+        state.userName = name;
       }
     }
   },

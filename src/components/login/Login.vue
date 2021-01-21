@@ -67,18 +67,26 @@ export default {
   //   console.log(res);
   // },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       if (this.username !== "" && this.password !== "") {
         console.log("用户名:", this.username, "密码", this.password);
+
+        // 调用api
         let data = {
           username: this.username,
           password: this.password
         };
+        let res = await Login(data);
 
-        let res = Login(data);
-        console.log(res);
-        this.$store.commit("userStatus", 1);
-        this.$router.push("/winning");
+        // 判断是否请求成功 并将用户数据存储到 Vuex中
+        // console.log(res, res.data.name, res.message);
+        let name = res.data.name;
+        if (res.message == "Succeed") {
+          this.$store.commit("userStatus", 1);
+          this.$store.commit("getUserName", name);
+          this.$router.push("/winning");
+          // console.log(this.$store.state.userName);
+        }
       } else {
         alert("请补齐用户名或密码");
       }
