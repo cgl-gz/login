@@ -116,6 +116,19 @@ export default {
       return list[state];
     }
   }
+  // beforeRouteEnter: (to, from, next) => {
+  //   next(vm => {
+  //     let state = vm.$store.state.isLogin;
+  //     console.log(state);
+  //     if (state) {
+  //       console.log("已登录");
+  //       vm.$router.push("/winning");
+  //     } else {
+  //       vm.$router.push("/login");
+  //       alert("未登录请先登录");
+  //     }
+  //   });
+  // }
 };
 </script>
 

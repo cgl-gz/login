@@ -28,7 +28,7 @@
       </div>
     </van-form> -->
 
-    <form>
+    <form @submit.prevent="onSubmit">
       <div class="item-login">
         <input type="text" placeholder="用户名" v-model="username" />
       </div>
@@ -37,18 +37,13 @@
         <input type="password" placeholder="密码" v-model="password" />
       </div>
       <div class="item-login">
-        <button type="submit" @click.prevent="getMessage()">登录</button>
+        <button type="submit">登录</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-// import Vue from "vue";
-// import { Form } from "vant";
-
-// Vue.use(Form);
-
 export default {
   data() {
     return {
@@ -57,14 +52,20 @@ export default {
     };
   },
   methods: {
-    getMessage() {
-      console.log("用户名:", this.username, "密码", this.password);
+    onSubmit() {
+      if (this.username !== "" && this.password !== "") {
+        console.log("用户名:", this.username, "密码", this.password);
+        this.$store.commit("userStatus", 1);
+        this.$router.push("/winning");
+      } else {
+        alert("请补齐用户名或密码");
+      }
     }
   }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .login {
   width: 100%;
   height: 100vh;
@@ -130,4 +131,8 @@ input:-ms-input-placeholder {
   background: rgba(4, 163, 116, 0.938);
   color: white;
 }
+// .login {
+//   .item-header {
+//   }
+// }
 </style>
