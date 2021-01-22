@@ -16,6 +16,9 @@
             <span class="right">详情></span>
           </div>
 
+          <div class="semicircle-left"></div>
+          <div class="semicircle-right"></div>
+
           <!-- 中间 -->
           <div class="message">
             <!-- 左侧 图片信息 -->
@@ -46,17 +49,33 @@
           <!-- 底部 -->
           <div class="base">
             <div class="win-state">
-              <div class="">状态：{{ codeTransition(item.state) }}</div>
+              <div>
+                状态：{{ codeTransition(item.state) }} 状态：{{
+                  codeTransition(item.state)
+                }}
+                状态：{{ codeTransition(item.state) }} 状态：{{
+                  codeTransition(item.state)
+                }}
+                状态：{{ codeTransition(item.state) }}状态：{{
+                  codeTransition(item.state)
+                }}
+                状态：{{ codeTransition(item.state) }} 状态：{{
+                  codeTransition(item.state)
+                }}
+                状态：{{ codeTransition(item.state) }} 状态：{{
+                  codeTransition(item.state)
+                }}状态：{{ codeTransition(item.state) }}
+              </div>
               <div class="deadline">过期时间：{{ item.deadline }}</div>
             </div>
-            <div class="button-state">
-              <button
-                v-if="getButtonState(item.state)"
-                :class="{ forbid: item.state == 1 }"
-              >
-                {{ getButtonState(item.state) }}
-              </button>
-            </div>
+            <!-- <div class="button-state"> -->
+            <button
+              v-if="getButtonState(item.state)"
+              :class="{ forbid: item.state == 1 }"
+            >
+              {{ getButtonState(item.state) }}
+            </button>
+            <!-- </div> -->
           </div>
         </li>
       </ul>
@@ -147,6 +166,7 @@ export default {
   overflow: hidden;
   .item {
     width: 100%;
+    position: relative;
     background: white;
     margin: 0 0 15px 0;
     border-radius: 5px;
@@ -165,6 +185,26 @@ export default {
         color: blueviolet;
       }
     }
+    .semicircle-left {
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      background: #ccc;
+      position: absolute;
+      top: 43px;
+      left: -8px;
+    }
+
+    .semicircle-right {
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      background: #ccc;
+      position: absolute;
+      top: 43px;
+      right: -8px;
+    }
+
     .message {
       display: flex;
       // height: 100px;
@@ -212,21 +252,35 @@ export default {
       }
     }
     .base {
-      // height: 30px;
       padding: 15px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .win-state {
+        flex: 1;
         font-size: 0.6rem;
         color: #999;
       }
-      .button-state button {
+      // .button-state {
+      //   flex: 0 0 80px;
+      //   .button-state button {
+      //     border: 1px solid blueviolet;
+      //     color: blueviolet;
+      //     background: white;
+      //     border-radius: 3px;
+      //     line-height: 30px;
+      //   }
+      // }
+      button {
+        height: 40px;
+        flex: 0 0 80px;
         border: 1px solid blueviolet;
         color: blueviolet;
         background: white;
         border-radius: 3px;
         line-height: 30px;
       }
+
       .forbid {
         // pointer-events: none;
         cursor: not-allowed;
