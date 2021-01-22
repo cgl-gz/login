@@ -25,15 +25,15 @@
             <!-- 右侧 具体信息 -->
             <div class="wrapper">
               <div class="message-item">
-                <div>
+                <div class="row">
                   <span class="left">获奖者:</span>
-                  <span class="right">{{ item.name }}</span>
+                  <span class="right">{{ getUserName }}</span>
                 </div>
-                <div>
+                <div class="row">
                   <span class="left">获奖时间:</span>
                   <span class="right">{{ item.time }}</span>
                 </div>
-                <div>
+                <div class="row">
                   <span class="left">商品期数:</span>
                   <span class="right">{{ item.periods }}</span>
                 </div>
@@ -52,7 +52,7 @@
             <div class="button-state">
               <button
                 v-if="getButtonState(item.state)"
-                :class="{ active: item.state == 1 }"
+                :class="{ forbid: item.state == 1 }"
               >
                 {{ getButtonState(item.state) }}
               </button>
@@ -115,6 +115,12 @@ export default {
       let list = ["填写地址", "填写地址", "查看物流"];
       return list[state];
     }
+  },
+  computed: {
+    getUserName() {
+      console.log(this.$store.state.userName);
+      return this.$store.state.userName;
+    }
   }
   // beforeRouteEnter: (to, from, next) => {
   //   next(vm => {
@@ -132,137 +138,102 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .winning {
   width: 100%;
-  height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
   background: #ccc;
   overflow: hidden;
-}
-
-/* .item-header {
-  width: 100%;
-  height: 5vh;
-  background: white;
-  text-align: center;
-  line-height: 5vh;
-  position: relative;
-}
-
-.item-header .back {
-  position: absolute;
-  left: 15px;
-  font-size: 1.5rem;
-} */
-.container .item {
-  margin: 15px;
-  background: white;
-  border-radius: 5px;
-}
-
-.upper-part {
-  height: 7vh;
-  border-bottom: 2px dotted #ccc;
-  text-align: center;
-  line-height: 7vh;
-}
-
-.upper-part .left {
-  float: left;
-  font-size: 1.5rem;
-  padding: 0 0 0 15px;
-}
-
-.upper-part .right {
-  float: right;
-  padding: 0 15px 0 0;
-  color: blueviolet;
-}
-
-.upper-part:after {
-  contain: "";
-  display: block;
-  clear: both;
-}
-
-.message {
-  border-bottom: 3px solid #ccc;
-  display: flex;
-  align-items: center;
-  padding: 2vh;
-  overflow: hidden;
-}
-
-.message-img {
-  flex: 0 0 30%;
-  height: 16vh;
-  background: #999;
-  margin: 0 2vh 0 0;
-}
-
-.wrapper {
-  flex: 1;
-  height: 16vh;
-  position: relative;
-}
-
-.message-item {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  font-size: 0.8rem;
-}
-
-.message-item div {
-  width: 100%;
-  display: flex;
-}
-
-.message-item div .left {
-  flex: 0 0 40%;
-  color: #999;
-}
-
-.message-item div .right {
-  flex: 1;
-}
-
-.win-num {
-  width: 100%;
-  /* height: 3vh; */
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  background: blueviolet;
-  color: white;
-  line-height: 3vh;
-}
-
-.base {
-  width: 100%;
-  height: 8vh;
-  padding: 2vh;
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  align-items: center;
-}
-
-.win-state {
-  color: #999;
-  font-size: 0.8rem;
-}
-
-.button-state button {
-  border: 1px solid blueviolet;
-  border-radius: 2px;
-  color: blueviolet;
-}
-
-.active {
-  pointer-events: none;
-  cursor: not-allowed;
-  border: 1px solid #999 !important;
-  color: #999 !important;
+  .item {
+    width: 100%;
+    background: white;
+    margin: 0 0 15px 0;
+    border-radius: 5px;
+    .upper-part {
+      // height: 20px;
+      border-bottom: 2px dotted #ccc;
+      padding: 15px;
+      line-height: 20px;
+      overflow: hidden;
+      .left {
+        float: left;
+        font-size: 1.3rem;
+      }
+      .right {
+        float: right;
+        color: blueviolet;
+      }
+    }
+    .message {
+      display: flex;
+      // height: 100px;
+      padding: 15px;
+      border-bottom: 3px solid #ccc;
+      overflow: hidden;
+      .message-img {
+        flex: 0 0 100px;
+        height: 100px;
+        margin: 0 15px 0 0;
+        background: #999;
+        font-size: 0.6rem;
+        text-align: center;
+      }
+      .wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 0.7rem;
+        // overflow: hidden;
+        .message-item {
+          width: 100%;
+          word-wrap: break-word;
+          word-break: break-all;
+          .row {
+            display: flex;
+            .left {
+              color: #999;
+              flex: 0 0 60px;
+            }
+            .right {
+              flex: 1;
+            }
+          }
+        }
+        .win-num {
+          width: 100%;
+          // height: 25px;
+          background: blueviolet;
+          color: white;
+          text-align: center;
+          line-height: 25px;
+        }
+      }
+    }
+    .base {
+      // height: 30px;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      .win-state {
+        font-size: 0.6rem;
+        color: #999;
+      }
+      .button-state button {
+        border: 1px solid blueviolet;
+        color: blueviolet;
+        background: white;
+        border-radius: 3px;
+        line-height: 30px;
+      }
+      .forbid {
+        // pointer-events: none;
+        cursor: not-allowed;
+        border: 1px solid #999 !important;
+        color: #999 !important;
+      }
+    }
+  }
 }
 </style>
