@@ -172,9 +172,10 @@ export default {
         font-size: 0.31rem;
       }
       .right {
-        flex: 0 0 0.8rem;
+        flex: 0 0 1rem;
         font-size: 0.26rem;
         color: rgb(101, 73, 200);
+        text-align: right;
       }
       &::after {
         content: " ";
