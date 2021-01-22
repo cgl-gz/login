@@ -12,7 +12,7 @@
         <li class="item" v-for="(item, index) in winningMessage" :key="index">
           <!-- 头部 -->
           <div class="upper-part">
-            <span class="left">已中奖</span>
+            <span class="left">已中奖 </span>
             <span class="right">详情></span>
           </div>
 
@@ -23,7 +23,10 @@
           <div class="message">
             <!-- 左侧 图片信息 -->
             <div class="message-img">
-              <img src="#" alt="中奖信息" />
+              <img
+                src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2829873283,1443710504&fm=26&gp=0.jpg"
+                alt="中奖信息"
+              />
             </div>
             <!-- 右侧 具体信息 -->
             <div class="wrapper">
@@ -34,7 +37,7 @@
                 </div>
                 <div class="row">
                   <span class="left">获奖时间:</span>
-                  <span class="right">{{ item.time }}</span>
+                  <span class="right">{{ item.time }} </span>
                 </div>
                 <div class="row">
                   <span class="left">商品期数:</span>
@@ -49,23 +52,7 @@
           <!-- 底部 -->
           <div class="base">
             <div class="win-state">
-              <div>
-                状态：{{ codeTransition(item.state) }} 状态：{{
-                  codeTransition(item.state)
-                }}
-                状态：{{ codeTransition(item.state) }} 状态：{{
-                  codeTransition(item.state)
-                }}
-                状态：{{ codeTransition(item.state) }}状态：{{
-                  codeTransition(item.state)
-                }}
-                状态：{{ codeTransition(item.state) }} 状态：{{
-                  codeTransition(item.state)
-                }}
-                状态：{{ codeTransition(item.state) }} 状态：{{
-                  codeTransition(item.state)
-                }}状态：{{ codeTransition(item.state) }}
-              </div>
+              <div>状态：{{ codeTransition(item.state) }}</div>
               <div class="deadline">过期时间：{{ item.deadline }}</div>
             </div>
             <!-- <div class="button-state"> -->
@@ -160,72 +147,79 @@ export default {
 <style lang="scss" scoped>
 .winning {
   width: 100%;
-  padding: 15px;
+  padding: 0.3rem;
   box-sizing: border-box;
-  background: #ccc;
+  color: rgb(79, 79, 79);
+  background: rgb(229, 229, 229);
   overflow: hidden;
   .item {
     width: 100%;
     position: relative;
     background: white;
-    margin: 0 0 15px 0;
-    border-radius: 5px;
+    margin: 0 0 0.3rem 0;
+    border-radius: 0.05rem;
+    font-size: 0.22rem;
     .upper-part {
-      // height: 20px;
-      border-bottom: 2px dotted #ccc;
-      padding: 15px;
-      line-height: 20px;
-      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 0.02rem dashed rgb(213, 213, 213);
+      padding: 0.3rem;
+      position: relative;
       .left {
-        float: left;
-        font-size: 1.3rem;
+        flex: 1;
+        margin-right: 0.1rem;
+        font-size: 0.31rem;
       }
       .right {
-        float: right;
-        color: blueviolet;
+        flex: 0 0 0.8rem;
+        font-size: 0.26rem;
+        color: rgb(101, 73, 200);
       }
-    }
-    .semicircle-left {
-      width: 16px;
-      height: 16px;
-      border-radius: 8px;
-      background: #ccc;
-      position: absolute;
-      top: 43px;
-      left: -8px;
-    }
-
-    .semicircle-right {
-      width: 16px;
-      height: 16px;
-      border-radius: 8px;
-      background: #ccc;
-      position: absolute;
-      top: 43px;
-      right: -8px;
+      &::after {
+        content: " ";
+        width: 0.11rem;
+        height: 0.22rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(50%);
+        border-radius: 0 0.11rem 0.11rem 0;
+        background: rgb(229, 229, 229);
+      }
+      &::before {
+        content: " ";
+        width: 0.11rem;
+        height: 0.22rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translateY(50%);
+        border-radius: 0.11rem 0 0 0.11rem;
+        background: rgb(229, 229, 229);
+      }
     }
 
     .message {
       display: flex;
-      // height: 100px;
-      padding: 15px;
-      border-bottom: 3px solid #ccc;
+      padding: 0.3rem;
+      border-bottom: 0.02rem solid rgb(229, 229, 229);
       overflow: hidden;
       .message-img {
-        flex: 0 0 100px;
-        height: 100px;
-        margin: 0 15px 0 0;
-        background: #999;
-        font-size: 0.6rem;
-        text-align: center;
+        flex: 0 0 2.27rem;
+        height: 2.14rem;
+        margin-right: 0.3rem;
+        background: rgb(186, 186, 186);
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
       .wrapper {
         flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        font-size: 0.7rem;
-        // overflow: hidden;
         .message-item {
           width: 100%;
           word-wrap: break-word;
@@ -233,59 +227,51 @@ export default {
           .row {
             display: flex;
             .left {
-              color: #999;
-              flex: 0 0 60px;
+              flex: 0 0 1.5rem;
+              padding-bottom: 0.1rem;
             }
             .right {
               flex: 1;
+              padding-bottom: 0.1rem;
             }
           }
         }
         .win-num {
           width: 100%;
-          // height: 25px;
-          background: blueviolet;
+          background: rgb(101, 73, 200);
           color: white;
           text-align: center;
-          line-height: 25px;
+          line-height: 0.46rem;
         }
       }
     }
     .base {
-      padding: 15px;
+      padding: 0.3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       .win-state {
         flex: 1;
-        font-size: 0.6rem;
-        color: #999;
+        margin-right: 0.1rem;
+        .deadline {
+          padding-top: 0.1rem;
+        }
       }
-      // .button-state {
-      //   flex: 0 0 80px;
-      //   .button-state button {
-      //     border: 1px solid blueviolet;
-      //     color: blueviolet;
-      //     background: white;
-      //     border-radius: 3px;
-      //     line-height: 30px;
-      //   }
-      // }
       button {
-        height: 40px;
-        flex: 0 0 80px;
-        border: 1px solid blueviolet;
-        color: blueviolet;
+        flex: 0 0 1.96rem;
+        padding: 0.09rem 0;
+        font-size: 0.27rem;
+        border: 0.02rem solid rgb(101, 73, 200);
+        color: rgb(101, 73, 200);
         background: white;
-        border-radius: 3px;
-        line-height: 30px;
+        border-radius: 0.04rem;
       }
 
       .forbid {
         // pointer-events: none;
         cursor: not-allowed;
-        border: 1px solid #999 !important;
-        color: #999 !important;
+        border: 0.02rem solid rgb(179, 179, 179) !important;
+        color: rgb(179, 179, 179) !important;
       }
     }
     &::before {
@@ -295,7 +281,7 @@ export default {
       right: 0;
       top: 0;
       bottom: 0;
-      background-color: #ccc;
+      background-color: rgb(229, 229, 229);
       z-index: -100;
     }
   }

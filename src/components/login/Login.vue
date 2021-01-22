@@ -116,12 +116,13 @@ export default {
 <style lang="scss" scoped>
 .login {
   width: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 1rem;
   background-color: rgb(249, 249, 249);
   .item-header {
-    height: 60px;
+    font-size: 0.3rem;
+    height: 1.9rem;
     text-align: center;
-    line-height: 60px;
+    line-height: 1.9rem;
     p {
       margin: 0;
     }
@@ -144,14 +145,14 @@ export default {
   }
   .item-login {
     width: 70%;
-    margin: 15px auto;
+    margin: 0.15rem auto;
     .item-input {
-      padding: 0 20px;
-      border-radius: 20px;
+      padding: 0 0.2rem;
+      border-radius: 0.4rem;
       box-sizing: border-box;
-      line-height: 40px;
+      line-height: 0.8rem;
       outline: none;
-      box-shadow: 3px 6px 5px #ccc;
+      box-shadow: 0.03rem 0.06rem 0.05rem #ccc;
     }
   }
   &::before {
