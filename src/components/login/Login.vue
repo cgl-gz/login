@@ -116,8 +116,8 @@ export default {
 <style lang="scss" scoped>
 .login {
   width: 100%;
-  height: 100vh;
-  background: rgb(249, 249, 249);
+  padding-bottom: 50px;
+  background-color: rgb(249, 249, 249);
   .item-header {
     height: 60px;
     text-align: center;
@@ -153,6 +153,16 @@ export default {
       outline: none;
       box-shadow: 3px 6px 5px #ccc;
     }
+  }
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(249, 249, 249);
+    z-index: -100;
   }
 }
 </style>
